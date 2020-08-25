@@ -27,6 +27,7 @@ defmodule Noray.MixProject do
         "deps.get",
         "deps.compile",
         "compile --force --return-errors",
+        "format --check-formatted",
         "credo --strict",
         "coveralls --raise",
         "dialyzer --list-unused-filters"
