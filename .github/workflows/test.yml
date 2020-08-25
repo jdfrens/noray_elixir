@@ -15,3 +15,4 @@ jobs:
       - run: mix deps.get
       - run: mix deps.compile
       - run: mix compile --force --return-errors
+      - run: mix dialyzer --list-unused-filters
