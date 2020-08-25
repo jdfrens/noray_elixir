@@ -27,6 +27,7 @@ defmodule Noray.MixProject do
         "deps.get",
         "deps.compile",
         "compile --force --return-errors",
+        "credo --strict",
         "coveralls --raise",
         "dialyzer --list-unused-filters"
       ]
@@ -41,6 +42,7 @@ defmodule Noray.MixProject do
 
   defp deps do
     [
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.10", only: :test}
     ]
