@@ -16,5 +16,6 @@ jobs:
       - run: mix deps.compile
       - run: mix compile --force --return-errors
       - run: mix format --check-formatted
+      - run: mix docs --output test/doc
       - run: mix credo --strict
       - run: mix dialyzer --list-unused-filters
