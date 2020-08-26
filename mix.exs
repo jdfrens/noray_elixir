@@ -3,26 +3,71 @@ defmodule Noray.MixProject do
 
   def project do
     [
+      aliases: aliases(),
       app: :noray,
-      version: "0.1.0",
-      elixir: "~> 1.9",
+      deps: deps(),
+      dialyzer: dialyzer(),
+      elixir: "~> 1.10",
+      preferred_cli_env: [
+        all_tests: :test,
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      test_coverage: [tool: ExCoveralls],
+      version: "0.1.0"
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+  defp aliases do
+    [
+      all_tests: [
+        "deps.get",
+        "deps.compile",
+        "compile --force --return-errors",
+        "format --check-formatted",
+        "docs --output test/doc",
+        "credo --strict",
+        "coveralls --raise",
+        "dialyzer --list-unused-filters"
+      ]
+    ]
+  end
+
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_doc, "~> 0.22", only: [:dev, :test], runtime: false}
+    ]
+  end
+
+  # NOTE: skipping :no_*, :underspecs, :overspecs, :specdiffs
+  @dialyzer_warn_opts ~w(
+    error_handling
+    race_conditions
+    unknown
+    unmatched_returns
+    )a
+  defp dialyzer do
+    [
+      flags: [
+        "-Wunmatched_returns" | @dialyzer_warn_opts
+      ],
+      ignore_warnings: ".dialyzer_ignore.exs",
+      list_unused_filters: true,
+      plt_add_apps: [:ex_unit],
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 end
