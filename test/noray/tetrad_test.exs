@@ -46,4 +46,12 @@ defmodule Noray.TetradTest do
       assert Tetrad.vector?(point)
     end
   end
+
+  describe "add/2" do
+    test "adds two tetrads together" do
+      tetrad1 = Tetrad.new(1.0, 2.0, 4.0, 8.0)
+      tetrad2 = Tetrad.new(16.0, 32.0, 64.0, 128.0)
+      assert Tetrad.add(tetrad1, tetrad2) == Tetrad.new(17.0, 34.0, 68.0, 136.0)
+    end
+  end
 end

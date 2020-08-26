@@ -31,4 +31,14 @@ defmodule Noray.Tetrad do
 
   @spec vector?(t()) :: boolean()
   def vector?(tetrad), do: tetrad(tetrad, :w) == 0.0
+
+  @spec add(t(), t()) :: t()
+  def add(tetrad1, tetrad2) do
+    tetrad(
+      x: tetrad(tetrad1, :x) + tetrad(tetrad2, :x),
+      y: tetrad(tetrad1, :y) + tetrad(tetrad2, :y),
+      z: tetrad(tetrad1, :z) + tetrad(tetrad2, :z),
+      w: tetrad(tetrad1, :w) + tetrad(tetrad2, :w)
+    )
+  end
 end
