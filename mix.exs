@@ -60,12 +60,14 @@ defmodule Noray.MixProject do
     )a
   defp dialyzer do
     [
-      plt_add_apps: [:ex_unit],
       flags: [
         "-Wunmatched_returns" | @dialyzer_warn_opts
       ],
       ignore_warnings: ".dialyzer_ignore.exs",
-      list_unused_filters: true
+      list_unused_filters: true,
+      plt_add_apps: [:ex_unit],
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 end
