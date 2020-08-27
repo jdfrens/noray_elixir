@@ -62,4 +62,11 @@ defmodule Noray.TetradTest do
       assert Tetrad.subtract(point1, point2) == Vector.new(-2.0, -4.0, -6.0)
     end
   end
+
+  describe "negate/2" do
+    test "negates a tetrad" do
+      tetrad = Tetrad.new(1.0, -2.0, 4.0, 8.0)
+      assert Tetrad.negate(tetrad) == Tetrad.new(-1.0, 2.0, -4.0, -8.0)
+    end
+  end
 end

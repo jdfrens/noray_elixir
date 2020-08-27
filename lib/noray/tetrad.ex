@@ -51,4 +51,14 @@ defmodule Noray.Tetrad do
       w: tetrad(tetrad1, :w) - tetrad(tetrad2, :w)
     )
   end
+
+  @spec negate(t()) :: t()
+  def negate(tetrad) do
+    tetrad(
+      x: -tetrad(tetrad, :x),
+      y: -tetrad(tetrad, :y),
+      z: -tetrad(tetrad, :z),
+      w: -tetrad(tetrad, :w)
+    )
+  end
 end
