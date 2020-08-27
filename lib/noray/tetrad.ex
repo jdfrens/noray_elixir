@@ -71,4 +71,14 @@ defmodule Noray.Tetrad do
       w: tetrad(tetrad, :w) * factor
     )
   end
+
+  @spec scale_inverse(t(), float()) :: t()
+  def scale_inverse(tetrad, factor_inverse) do
+    tetrad(
+      x: tetrad(tetrad, :x) / factor_inverse,
+      y: tetrad(tetrad, :y) / factor_inverse,
+      z: tetrad(tetrad, :z) / factor_inverse,
+      w: tetrad(tetrad, :w) / factor_inverse
+    )
+  end
 end

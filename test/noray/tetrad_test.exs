@@ -76,4 +76,11 @@ defmodule Noray.TetradTest do
       assert Tetrad.scale(tetrad, 2.0) == Tetrad.new(2.0, -4.0, 8.0, 16.0)
     end
   end
+
+  describe "scale_inverse/2" do
+    test "scales a tetrad" do
+      tetrad = Tetrad.new(1.0, -2.0, 4.0, 8.0)
+      assert Tetrad.scale_inverse(tetrad, 2.0) == Tetrad.new(0.5, -1.0, 2.0, 4.0)
+    end
+  end
 end
