@@ -81,36 +81,4 @@ defmodule Noray.Tetrad do
       w: tetrad(tetrad, :w) / factor_inverse
     )
   end
-
-  @spec magnitude(t()) :: float()
-  def magnitude(tetrad) do
-    x = tetrad(tetrad, :x)
-    y = tetrad(tetrad, :y)
-    z = tetrad(tetrad, :z)
-    w = tetrad(tetrad, :w)
-    :math.sqrt(x * x + y * y + z * z + w * w)
-  end
-
-  @spec normalize(t()) :: t()
-  def normalize(tetrad) do
-    scale_inverse(tetrad, magnitude(tetrad))
-  end
-
-  @spec dot(t(), t()) :: float()
-  def dot(tetrad1, tetrad2) do
-    tetrad(tetrad1, :x) * tetrad(tetrad2, :x) +
-      tetrad(tetrad1, :y) * tetrad(tetrad2, :y) +
-      tetrad(tetrad1, :z) * tetrad(tetrad2, :z) +
-      tetrad(tetrad1, :w) * tetrad(tetrad2, :w)
-  end
-
-  @spec cross(t(), t()) :: t()
-  def cross(tetrad1, tetrad2) do
-    tetrad(
-      x: tetrad(tetrad1, :y) * tetrad(tetrad2, :z) - tetrad(tetrad1, :z) * tetrad(tetrad2, :y),
-      y: tetrad(tetrad1, :z) * tetrad(tetrad2, :x) - tetrad(tetrad1, :x) * tetrad(tetrad2, :z),
-      z: tetrad(tetrad1, :x) * tetrad(tetrad2, :y) - tetrad(tetrad1, :y) * tetrad(tetrad2, :x),
-      w: 0.0
-    )
-  end
 end
