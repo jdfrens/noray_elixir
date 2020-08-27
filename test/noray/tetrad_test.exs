@@ -83,4 +83,26 @@ defmodule Noray.TetradTest do
       assert Tetrad.scale_inverse(tetrad, 2.0) == Tetrad.new(0.5, -1.0, 2.0, 4.0)
     end
   end
+
+  describe "magnitude/1" do
+    test "magnitude of unit x-axis" do
+      vector = Vector.new(1.0, 0.0, 0.0)
+      assert Tetrad.magnitude(vector) == 1.0
+    end
+
+    test "magnitude of unit y-axis" do
+      vector = Vector.new(0.0, 1.0, 0.0)
+      assert Tetrad.magnitude(vector) == 1.0
+    end
+
+    test "magnitude of unit z-axis" do
+      vector = Vector.new(0.0, 0.0, 1.0)
+      assert Tetrad.magnitude(vector) == 1.0
+    end
+
+    test "magnitude of interesting vector" do
+      vector = Vector.new(1, -2, 3)
+      assert Tetrad.magnitude(vector) == :math.sqrt(14)
+    end
+  end
 end

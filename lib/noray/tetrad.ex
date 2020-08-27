@@ -81,4 +81,13 @@ defmodule Noray.Tetrad do
       w: tetrad(tetrad, :w) / factor_inverse
     )
   end
+
+  @spec magnitude(t()) :: float()
+  def magnitude(tetrad) do
+    x = tetrad(tetrad, :x)
+    y = tetrad(tetrad, :y)
+    z = tetrad(tetrad, :z)
+    w = tetrad(tetrad, :w)
+    :math.sqrt(x * x + y * y + z * z + w * w)
+  end
 end
