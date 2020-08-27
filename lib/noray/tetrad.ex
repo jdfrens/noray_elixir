@@ -95,4 +95,12 @@ defmodule Noray.Tetrad do
   def normalize(tetrad) do
     scale_inverse(tetrad, magnitude(tetrad))
   end
+
+  @spec dot(t(), t()) :: float()
+  def dot(tetrad1, tetrad2) do
+    tetrad(tetrad1, :x) * tetrad(tetrad2, :x) +
+      tetrad(tetrad1, :y) * tetrad(tetrad2, :y) +
+      tetrad(tetrad1, :z) * tetrad(tetrad2, :z) +
+      tetrad(tetrad1, :w) * tetrad(tetrad2, :w)
+  end
 end

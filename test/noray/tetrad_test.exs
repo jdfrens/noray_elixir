@@ -119,4 +119,12 @@ defmodule Noray.TetradTest do
                Vector.new(0.2672612419124244, -0.5345224838248488, 0.8017837257372732)
     end
   end
+
+  describe "dot/2" do
+    test "computes the dot product of two vectors" do
+      vector1 = Vector.new(1.0, 2.0, 3.0)
+      vector2 = Vector.new(2.0, 3.0, 4.0)
+      assert Tetrad.dot(vector1, vector2) == 20.0
+    end
+  end
 end
