@@ -103,4 +103,14 @@ defmodule Noray.Tetrad do
       tetrad(tetrad1, :z) * tetrad(tetrad2, :z) +
       tetrad(tetrad1, :w) * tetrad(tetrad2, :w)
   end
+
+  @spec cross(t(), t()) :: t()
+  def cross(tetrad1, tetrad2) do
+    tetrad(
+      x: tetrad(tetrad1, :y) * tetrad(tetrad2, :z) - tetrad(tetrad1, :z) * tetrad(tetrad2, :y),
+      y: tetrad(tetrad1, :z) * tetrad(tetrad2, :x) - tetrad(tetrad1, :x) * tetrad(tetrad2, :z),
+      z: tetrad(tetrad1, :x) * tetrad(tetrad2, :y) - tetrad(tetrad1, :y) * tetrad(tetrad2, :x),
+      w: 0.0
+    )
+  end
 end

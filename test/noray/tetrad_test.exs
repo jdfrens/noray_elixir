@@ -127,4 +127,13 @@ defmodule Noray.TetradTest do
       assert Tetrad.dot(vector1, vector2) == 20.0
     end
   end
+
+  describe "cross/2" do
+    test "computes the cross product of two vectors" do
+      vector1 = Vector.new(1.0, 2.0, 3.0)
+      vector2 = Vector.new(2.0, 3.0, 4.0)
+      assert Tetrad.cross(vector1, vector2) == Vector.new(-1.0, 2.0, -1.0)
+      assert Tetrad.cross(vector2, vector1) == Vector.new(1.0, -2.0, 1.0)
+    end
+  end
 end
