@@ -41,4 +41,14 @@ defmodule Noray.Tetrad do
       w: tetrad(tetrad1, :w) + tetrad(tetrad2, :w)
     )
   end
+
+  @spec subtract(t(), t()) :: t()
+  def subtract(tetrad1, tetrad2) do
+    tetrad(
+      x: tetrad(tetrad1, :x) - tetrad(tetrad2, :x),
+      y: tetrad(tetrad1, :y) - tetrad(tetrad2, :y),
+      z: tetrad(tetrad1, :z) - tetrad(tetrad2, :z),
+      w: tetrad(tetrad1, :w) - tetrad(tetrad2, :w)
+    )
+  end
 end

@@ -54,4 +54,12 @@ defmodule Noray.TetradTest do
       assert Tetrad.add(tetrad1, tetrad2) == Tetrad.new(17.0, 34.0, 68.0, 136.0)
     end
   end
+
+  describe "subscribe/2" do
+    test "subtract one point from another" do
+      point1 = Point.new(3.0, 2.0, 1.0)
+      point2 = Point.new(5.0, 6.0, 7.0)
+      assert Tetrad.subtract(point1, point2) == Vector.new(-2.0, -4.0, -6.0)
+    end
+  end
 end
