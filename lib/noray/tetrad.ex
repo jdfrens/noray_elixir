@@ -90,4 +90,9 @@ defmodule Noray.Tetrad do
     w = tetrad(tetrad, :w)
     :math.sqrt(x * x + y * y + z * z + w * w)
   end
+
+  @spec normalize(t()) :: t()
+  def normalize(tetrad) do
+    scale_inverse(tetrad, magnitude(tetrad))
+  end
 end

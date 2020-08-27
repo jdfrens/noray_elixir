@@ -105,4 +105,18 @@ defmodule Noray.TetradTest do
       assert Tetrad.magnitude(vector) == :math.sqrt(14)
     end
   end
+
+  describe "normalize/1" do
+    test "simple vector" do
+      vector = Vector.new(0.0, 4.0, 0.0)
+      assert Tetrad.normalize(vector) == Vector.new(0.0, 1.0, 0.0)
+    end
+
+    test "normalize interesting vector" do
+      vector = Vector.new(1.0, -2.0, 3.0)
+
+      assert Tetrad.normalize(vector) ==
+               Vector.new(0.2672612419124244, -0.5345224838248488, 0.8017837257372732)
+    end
+  end
 end
