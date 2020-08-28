@@ -24,8 +24,6 @@ defmodule Noray.MixProject do
   defp aliases do
     [
       all_tests: [
-        "deps.get",
-        "deps.compile",
         "compile --force --return-errors",
         "format --check-formatted",
         "docs --output test/doc",
